@@ -11,6 +11,7 @@ export function initializeResizer(){
         document.addEventListener('mouseup', function() {
             isResizing = false;
             document.removeEventListener('mousemove', handleMouseMove);
+            console.log("Mouse released, resizing stopped"); // Debugging log
         });
     });
 
@@ -19,5 +20,6 @@ export function initializeResizer(){
         const containerRect = container.getBoundingClientRect();
         const leftWidth = e.clientX - containerRect.left; // New width of the left panel
         leftPanel.style.width = `${leftWidth}px`;
+        console.log(`New width: ${leftWidth}px`); // Debugging log
     }
 }

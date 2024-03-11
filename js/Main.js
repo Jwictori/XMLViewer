@@ -3,6 +3,7 @@ import { buildTree } from './TreeBuilder.js';
 import { initializeSearchFeature } from './SearchFeature.js';
 import { initializeExpandCollapse } from './ExpandCollapse.js';
 import { initializeResizer } from './Resizer.js';
+import { initializeD3Visualization } from './D3Visualization.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -14,4 +15,5 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeSearchFeature();
     initializeExpandCollapse();
     initializeResizer();
+    initializeD3Visualization();
 }); 
