@@ -31,6 +31,6 @@ export function initializeResizer() {
         newWidth = Math.min(Math.max(newWidth, minWidth), maxWidth);
 
         leftPanel.style.width = `${newWidth}px`;
-        console.log(`${newWidth}px`)
+        console.log(`New flex-basis: ${newWidth}px`);
     }
 }
