@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <title>XML Data Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50 p-4">
+    <div class="container mx-auto">
+        <input type="file" id="fileInput" class="mb-4" />
+        <input type="text" id="searchInput" placeholder="Search..." class="mb-4 p-2 border rounded w-full" />
+        <div class="controls mb-4">
+            <button id="expandAll" class="control-btn">Expand All</button>
+            <button id="collapseAll" class="control-btn">Collapse All</button>
+        </div>
+        <div id="treeContainer"></div>
+    </div>
+    <script src="js/Main.js" type="module"></script>
+</body>
+</html>
