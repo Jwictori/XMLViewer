@@ -48,13 +48,8 @@
     overflow: auto; /* Add scrollbar if content overflows */
 }
 
-/* Optional: if you want a divider in between that the user can drag to resize */
-#treeViewer {
-    /*resize: horizontal;*/
-    overflow: auto;
-}
-
-#d3Visualization {
+#treeViewer, #d3Visualization {
+    flex-basis: 50%; /* Evenly distribute the initial width */
     overflow: auto;
 }
 

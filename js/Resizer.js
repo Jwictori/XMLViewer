@@ -1,6 +1,7 @@
 export function initializeResizer() {
   const resizer = document.getElementById("resizer");
   const leftPanel = document.getElementById("treeViewer");
+  const rightPanel = document.getElementById('d3Visualization');
   const container = document.getElementById("container");
   let isResizing = false;
   let initialPosX = 0;
@@ -17,7 +18,7 @@ export function initializeResizer() {
     document.addEventListener("mouseup", function () {
       isResizing = false;
       document.removeEventListener("mousemove", handleMouseMove);
-      console.log("Mouse released, resizing stopped");
+      //console.log("Mouse released, resizing stopped");
     });
   });
 
@@ -36,5 +37,6 @@ export function initializeResizer() {
     }
     //console.log(`New flex-basis: ${setFlexBasis}px`);
     leftPanel.style.flexBasis = `${setFlexBasis}px`;
+    rightPanel.style.flexBasis = `${container.offsetWidth - setFlexBasis}px`;
   }
 }
