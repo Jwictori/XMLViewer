@@ -16,6 +16,7 @@ export function initializeResizer() {
         document.addEventListener('mouseup', function() {
             isResizing = false;
             document.removeEventListener('mousemove', handleMouseMove);
+            console.log("Mouse released, resizing stopped");
         });
     });
 
@@ -30,5 +31,6 @@ export function initializeResizer() {
         newWidth = Math.min(Math.max(newWidth, minWidth), maxWidth);
 
         leftPanel.style.width = `${newWidth}px`;
+        console.log(`${newWidth}px`)
     }
 }
