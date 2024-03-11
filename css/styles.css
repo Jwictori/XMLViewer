@@ -44,7 +44,7 @@
 }
 
 .panel {
-    flex: 1; /* Distribute space equally */
+    /*flex: 1;*/ /* Distribute space equally */
     overflow: auto; /* Add scrollbar if content overflows */
 }
 
