@@ -50,7 +50,7 @@
 
 /* Optional: if you want a divider in between that the user can drag to resize */
 #treeViewer {
-    resize: horizontal;
+    /*resize: horizontal;*/
     overflow: auto;
 }
 
@@ -65,7 +65,7 @@
 }*/
 
 .resizer {
-    cursor: col-resize;
+    cursor: ew-resize;
     background-color: #ccc;
     width: 5px;
     height: 100%;

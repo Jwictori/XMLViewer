@@ -22,15 +22,10 @@ export function initializeResizer() {
 
     function handleMouseMove(e) {
         if (!isResizing) return;
+        // Calculate the new basis
         const deltaX = e.clientX - initialPosX;
-        let newWidth = initialWidth + deltaX;
-
-        // Implement minimum and maximum width constraints
-        const minWidth = 100; // Minimum width in pixels
-        const maxWidth = container.offsetWidth - 100; // Example maximum width constraint
-        newWidth = Math.min(Math.max(newWidth, minWidth), maxWidth);
-
-        leftPanel.style.width = `${newWidth}px`;
-        console.log(`New flex-basis: ${newWidth}px`);
+        const newFlexBasis = Math.max(initialWidth + deltaX, minWidth); // Apply a minimum width directly here
+        console.log(`New flex-basis: ${newFlexBasis}px`);
+        leftPanel.style.flexBasis = `${newFlexBasis}px`;
     }
 }
