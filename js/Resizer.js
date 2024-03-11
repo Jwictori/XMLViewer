@@ -19,7 +19,7 @@ export function initializeResizer(){
         if (!isResizing) return;
         const containerRect = container.getBoundingClientRect();
         const leftWidth = e.clientX - containerRect.left; // New width of the left panel
-        leftPanel.style.width = `${leftWidth}px`;
-        console.log(`New width: ${leftWidth}px`); // Debugging log
+        leftPanel.style.flexBasis = `${leftWidth}px`; // Adjust this line
+        console.log(`New flex-basis: ${leftWidth}px`);
     }
 }
