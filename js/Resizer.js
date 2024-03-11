@@ -5,6 +5,7 @@ export function initializeResizer() {
     let isResizing = false;
     let initialPosX = 0;
     let initialWidth = 0;
+    let minWidth = 100;
 
     resizer.addEventListener('mousedown', function(e) {
         e.preventDefault();
