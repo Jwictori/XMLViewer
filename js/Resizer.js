@@ -1,39 +1,34 @@
-export function initializeResizer(){
+export function initializeResizer() {
     const resizer = document.getElementById('resizer');
     const leftPanel = document.getElementById('treeViewer');
     const container = document.getElementById('container');
     let isResizing = false;
-
-    let initialOffsetX = 0; // Initial horizontal offset between the cursor and the right edge of the left panel
+    let initialPosX = 0;
+    let initialWidth = 0;
 
     resizer.addEventListener('mousedown', function(e) {
         e.preventDefault();
         isResizing = true;
-        
-        // Calculate the initial offset
-        const startResizerPosX = e.clientX;
-        const leftPanelRect = leftPanel.getBoundingClientRect();
-        initialOffsetX = startResizerPosX - leftPanelRect.right;
-        
+        initialPosX = e.clientX;
+        initialWidth = leftPanel.offsetWidth;
+
         document.addEventListener('mousemove', handleMouseMove);
         document.addEventListener('mouseup', function() {
             isResizing = false;
             document.removeEventListener('mousemove', handleMouseMove);
-            console.log("Mouse released, resizing stopped"); // Debugging log
         });
     });
 
     function handleMouseMove(e) {
         if (!isResizing) return;
-        const containerRect = container.getBoundingClientRect();
-        // Adjust the calculation to account for the initial offset
-        let newFlexBasis = e.clientX - containerRect.left - initialOffsetX;
-        // Prevent negative width
-        if (newFlexBasis < 0) {
-            newFlexBasis = 0;
-        }
-        leftPanel.style.flexBasis = `${newFlexBasis}px`;
-        console.log(`New flex-basis: ${newFlexBasis}px`); // Debugging log
+        const deltaX = e.clientX - initialPosX;
+        let newWidth = initialWidth + deltaX;
+
+        // Implement minimum and maximum width constraints
+        const minWidth = 100; // Minimum width in pixels
+        const maxWidth = container.offsetWidth - 100; // Example maximum width constraint
+        newWidth = Math.min(Math.max(newWidth, minWidth), maxWidth);
+
+        leftPanel.style.width = `${newWidth}px`;
     }
-    
 }
