@@ -45,7 +45,7 @@
 
 .panel {
     flex: 1; /* Distribute space equally */
-    overflow: auto; /* Add scrollbars if content overflows */
+    overflow: auto; /* Add scrollbar if content overflows */
 }
 
 /* Optional: if you want a divider in between that the user can drag to resize */
