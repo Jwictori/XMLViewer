@@ -2,6 +2,7 @@ import { setupXMLFileLoader } from './XMLLoader.js';
 import { buildTree } from './TreeBuilder.js';
 import { initializeSearchFeature } from './SearchFeature.js';
 import { initializeExpandCollapse } from './ExpandCollapse.js';
+import { initializeResizer } from './Resizer.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -12,4 +13,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     initializeSearchFeature();
     initializeExpandCollapse();
+    initializeResizer();
 }); 

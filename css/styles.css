@@ -37,3 +37,36 @@
 .highlight {
     background-color: yellow;
 }
+
+.flex {
+    display: flex;
+    height: 100vh; /* Adjust based on your layout needs */
+}
+
+.panel {
+    flex: 1; /* Distribute space equally */
+    overflow: auto; /* Add scrollbars if content overflows */
+}
+
+/* Optional: if you want a divider in between that the user can drag to resize */
+#treeViewer {
+    resize: horizontal;
+    overflow: auto;
+}
+
+#d3Visualization {
+    overflow: auto;
+}
+
+/* Prevent the treeViewer from being resized too small or too large */
+#treeViewer {
+    min-width: 20%; /* Minimum width */
+    max-width: 80%; /* Maximum width */
+}
+
+.resizer {
+    cursor: col-resize;
+    background-color: #ccc;
+    width: 5px;
+    height: 100%;
+}
