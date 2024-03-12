@@ -34,6 +34,8 @@ export function initializeResizer() {
     ghostDivider = resizer.cloneNode(true);
     ghostDivider.style.position = 'absolute';
     ghostDivider.classList.add('ghost-divider');
+    ghostDivider.style.height = `${container.offsetHeight}px`; // Match the container's height
+    ghostDivider.style.zIndex = '100'; // Ensure it's above other content   
     document.body.appendChild(ghostDivider); // Append to body to ensure it's not confined by any container
 
     document.addEventListener('mousemove', handleMouseMoveGhost);
@@ -80,13 +82,14 @@ export function initializeResizer() {
   */
   function handleMouseMoveGhost(e) {
     const deltaX = e.clientX - initialPosX;
-    let newFlexBasisPreview = initialWidth + deltaX;
+    //let newFlexBasisPreview = initialWidth + deltaX;
     
     // Update the position of the ghost divider for visual feedback
-    ghostDivider.style.left = `${e.clientX}px`;
+    ghostDivider.style.left = `${e.clientX}px`; // Follow the cursor horizontally
+    ghostDivider.style.top = `${container.offsetTop}px`; // Align with the container vertically
 
     // Optionally, you can preview the new flex-basis value in the console
-    console.log(`Preview new flex-basis: ${newFlexBasisPreview}px`);
+    // console.log(`Preview new flex-basis: ${newFlexBasisPreview}px`);
 }
 
 }
