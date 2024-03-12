@@ -8,6 +8,7 @@ export function initializeResizer() {
   let initialWidth = 0;
   let minWidth = 100;
   let ghostDivider;
+  let newFlexBasis;
 
   /*resizer.addEventListener("mousedown", function (e) {
     e.preventDefault();
@@ -72,7 +73,7 @@ export function initializeResizer() {
   function handleMouseMoveGhost(e) {
     if (!isResizing) return;
     const deltaX = e.clientX - initialPosX;
-    let newFlexBasis = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
+    newFlexBasis = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
     ghostDivider.style.left = `${e.clientX}px`; // Update ghost position
   }
 
