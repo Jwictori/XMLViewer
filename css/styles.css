@@ -66,10 +66,15 @@
     position: absolute;
 }
 
+.configurator-hidden {
+    display: none;
+}
+
 #relation-configurator { 
     transition: max-height 2s ease;
     border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 10px;
     margin-top: 5px;
+    z-index: 200;
    }

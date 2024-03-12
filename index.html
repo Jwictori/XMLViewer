@@ -10,54 +10,57 @@
 <body class="bg-gray-50 p-4">
 
     <div class="container mx-auto">	
-		<div class="header-container">
-			<!-- Existing header elements -->
-			<input type="file" id="fileInput" class="mb-4" />
-			<input type="text" id="searchInput" placeholder="Search..." class="mb-4 p-2 border rounded w-full" />
-			<div class="controls mb-4">
-				<button id="expandAll" class="control-btn">Expand All</button>
-				<button id="collapseAll" class="control-btn">Collapse All</button>
+		<div class="container mx-auto">	
+			<div class="header-container bg-gray-50 grid grid-cols-5 grid-rows-3 gap-4 border-b-4 border-gray-200">
+				<!-- Existing header elements -->
+				<input type="file" id="fileInput" class="row-start-1 row-end-1 self-end file:bg-blue-500"/>
+				<input type="text" id="searchInput" placeholder="Search..." class="p-2 border rounded w-full row-start-2" />
+				<div class="controls mb-4 row-start-3">
+					<button id="expandAll" class="cursor-pointer py-1.5 px-3 bg-blue-500 rounded-md mr-2 text-white text-sm hover:bg-blue-700">Expand All</button>
+					<button id="collapseAll" class="cursor-pointer py-1.5 px-3 bg-blue-500 rounded-md mr-2 text-white text-sm hover:bg-blue-700">Collapse All</button>
+				</div>
+		  <div class="row-start-3 col-start-3 mx-auto">
+			<button id="toggleConfigurator" class="text-white bg-blue-500 hover:bg-blue-700 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700">
+					<i data-feather="chevron-down" class="icon-down"></i>
+			   <i data-feather="chevron-up" class="icon-up hidden"></i>
+				</button>
+		  </div>
 			</div>
-		</div>
-		
-		<button id="toggleConfigurator" class="text-white bg-blue-500 hover:bg-blue-700 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700">
-			<i data-feather="chevron-down" class="icon-down"></i>
-            <i data-feather="chevron-up" class="icon-up hidden"></i>
-		</button>
-		
-		<div id="relation-configurator" class="hidden">
-			<div class="criteria my-4">
-				<select id="node-selector-1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3">
-				</select>
-				<select id="relation-type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3">
-					<option value="parent-child">Parent-Child</option>
-					<option value="sibling">Sibling</option>
-				</select>
-				<select id="node-selector-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-5">
-				</select>
-				<button id="addCriteria" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-					Add Criteria
+			
+			
+			
+			<div id="relation-configurator" class="configurator-hidden">
+				<div class="criteria my-4">
+					<select id="node-selector-1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3">
+					</select>
+					<select id="relation-type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3">
+						<option value="parent-child">Parent-Child</option>
+						<option value="sibling">Sibling</option>
+					</select>
+					<select id="node-selector-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-5">
+					</select>
+					<button id="addCriteria" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+						Add Criteria
+					</button>
+				</div>
+				<button id="applyConfiguration" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+					Apply Configuration
 				</button>
 			</div>
-			<button id="applyConfiguration" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-				Apply Configuration
-			</button>
-		</div>
-		
-		<div class="data-visualization-container">
-			<!-- Containers for the treeView and D3 visualization -->
-			<div id="container" class="flex">
-				<div id="treeViewer" class="panel">
-					<div id="treeContainer"></div>
-				</div>
-				<div id="resizer" class="resizer"></div> <!-- Draggable divider -->
-				<div id="d3Visualization" class="panel">
-					<div id="d3-container"></div>
+			
+			<div class="data-visualization-container pt-2">
+				<!-- Containers for the treeView and D3 visualization -->
+				<div id="container" class="flex">
+					<div id="treeViewer" class="panel">
+						<div id="treeContainer"></div>
+					</div>
+					<div id="resizer" class="resizer bg-gray-400"></div> <!-- Draggable divider -->
+					<div id="d3Visualization" class="panel">
+						<div id="d3-container"></div>
+					</div>
 				</div>
 			</div>
 		</div>
-        
-	</div>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="js/Main.js" type="module"></script>

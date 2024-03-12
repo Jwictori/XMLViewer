@@ -28,12 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const configurator = document.getElementById("relation-configurator");
         const iconDown = document.querySelector(".icon-down");
         const iconUp = document.querySelector(".icon-up");
-        if (configurator.classList.contains("hidden")) {
-           configurator.classList.remove("hidden");
+        configurator.classList.toggle("configurator-hidden");
+        if (configurator.classList.contains("configurator-hidden")) {
            iconDown.classList.add("hidden");
            iconUp.classList.remove("hidden");
         } else {
-           configurator.classList.add("hidden");
            iconDown.classList.remove("hidden");
            iconUp.classList.add("hidden");
         }
