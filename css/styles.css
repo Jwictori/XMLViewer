@@ -65,3 +65,12 @@
     width: 5px;
     height: 100%;
 }
+
+.resizer.dragging, .ghost-divider {
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent for the dragging effect */
+    position: absolute;
+}
+.ghost-divider {
+    width: 5px; /* Match the width of your resizer */
+    z-index: 100; /* Ensure it's above other content */
+}
