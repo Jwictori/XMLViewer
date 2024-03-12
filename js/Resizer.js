@@ -83,9 +83,11 @@ export function initializeResizer() {
   function handleMouseMoveGhost(e) {
     const deltaX = e.clientX - initialPosX;
     //let newFlexBasisPreview = initialWidth + deltaX;
+    let newFlexBasisPreview = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
+    let newLeftPosition = container.getBoundingClientRect().left + newFlexBasisPreview;
     
     // Update the position of the ghost divider for visual feedback
-    ghostDivider.style.left = `${e.clientX}px`; // Follow the cursor horizontally
+    ghostDivider.style.left = `${newLeftPosition}px`; // Follow the cursor horizontally
     ghostDivider.style.top = `${container.offsetTop}px`; // Align with the container vertically
 
     // Optionally, you can preview the new flex-basis value in the console
