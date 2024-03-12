@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    function applyConfiguration() {
-        
+    function applyConfigurationFunc() {
+
     }
 
 }); 
