@@ -52,12 +52,6 @@
     overflow: auto;
 }
 
-/* Prevent the treeViewer from being resized too small or too large */
-/*#treeViewer {
-    min-width: 20%;
-    max-width: 80%;
-}*/
-
 .resizer {
     cursor: ew-resize;
     background-color: #ccc;

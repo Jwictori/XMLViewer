@@ -10,20 +10,6 @@ export function initializeResizer() {
   let ghostDivider;
   let newFlexBasis;
 
-  /*resizer.addEventListener("mousedown", function (e) {
-    e.preventDefault();
-    isResizing = true;
-    initialPosX = e.clientX;
-    initialWidth = leftPanel.offsetWidth; // Capture the initial width
-
-    document.addEventListener("mousemove", debouncedHandleMouseMove);
-    document.addEventListener("mouseup", function () {
-      isResizing = false;
-      document.removeEventListener("mousemove", debouncedHandleMouseMove);
-      //console.log("Mouse released, resizing stopped"); // For debug
-    });
-  });
-  */
   resizer.addEventListener('mousedown', function(e) {
     e.preventDefault();
     isResizing = true;
@@ -68,21 +54,8 @@ export function initializeResizer() {
     };
 }
 
-  /*const debouncedHandleMouseMove = debounce(function(e) {
-    if (!isResizing) return;
-    // Calculate the new basis
-    const deltaX = e.clientX - initialPosX;
-    let newFlexBasis = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
-    // Directly apply the calculated flex-basis to the left panel
-    leftPanel.style.flexBasis = `${newFlexBasis}px`;
-    // Adjust the right panel's flex-basis based on the left panel's new size
-    rightPanel.style.flexBasis = `${container.offsetWidth - newFlexBasis}px`;
-    //console.log(`New flex-basis: ${setFlexBasis}px`); // For debug
-  }, 50); // 50 milliseconds delay
-  */
   function handleMouseMoveGhost(e) {
     const deltaX = e.clientX - initialPosX;
-    //let newFlexBasisPreview = initialWidth + deltaX;
     let newFlexBasisPreview = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
     let newLeftPosition = container.getBoundingClientRect().left + newFlexBasisPreview;
     
