@@ -30,18 +30,26 @@ export function initializeResizer() {
     initialPosX = e.clientX;
     initialWidth = leftPanel.offsetWidth;
 
-    // Create a ghost divider for visual feedback
+    // Create the ghost divider
     ghostDivider = resizer.cloneNode(true);
+    ghostDivider.style.position = 'absolute';
     ghostDivider.classList.add('ghost-divider');
-    container.appendChild(ghostDivider);
+    document.body.appendChild(ghostDivider); // Append to body to ensure it's not confined by any container
 
     document.addEventListener('mousemove', handleMouseMoveGhost);
-    document.addEventListener('mouseup', function() {
-        document.removeEventListener('mousemove', handleMouseMoveGhost);
-        isResizing = false;
-        leftPanel.style.flexBasis = `${newFlexBasis}px`;
-        container.removeChild(ghostDivider); // Remove ghost on mouseup
-    });
+  });
+  document.addEventListener('mouseup', function(e) {
+    if (!isResizing) return;
+    document.removeEventListener('mousemove', handleMouseMoveGhost);
+    
+    const deltaX = e.clientX - initialPosX;
+    let finalFlexBasis = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
+
+    leftPanel.style.flexBasis = `${finalFlexBasis}px`;
+    rightPanel.style.flexBasis = `${container.offsetWidth - finalFlexBasis}px`;
+
+    document.body.removeChild(ghostDivider); // Remove the ghost divider
+    isResizing = false;
   });
 
 
@@ -71,10 +79,14 @@ export function initializeResizer() {
   }, 50); // 50 milliseconds delay
   */
   function handleMouseMoveGhost(e) {
-    if (!isResizing) return;
     const deltaX = e.clientX - initialPosX;
-    newFlexBasis = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
-    ghostDivider.style.left = `${e.clientX}px`; // Update ghost position
-  }
+    let newFlexBasisPreview = initialWidth + deltaX;
+    
+    // Update the position of the ghost divider for visual feedback
+    ghostDivider.style.left = `${e.clientX}px`;
+
+    // Optionally, you can preview the new flex-basis value in the console
+    console.log(`Preview new flex-basis: ${newFlexBasisPreview}px`);
+}
 
 }
