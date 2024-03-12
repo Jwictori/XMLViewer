@@ -26,12 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function toggleConfigurator() {
         const configurator = document.getElementById("relation-configurator");
-        if (configurator.style.display === "none") {
-            configurator.style.display = "block";
+        const iconDown = document.querySelector(".icon-down");
+        const iconUp = document.querySelector(".icon-up");
+        if (configurator.classList.contains("hidden")) {
+           configurator.classList.remove("hidden");
+           iconDown.classList.add("hidden");
+           iconUp.classList.remove("hidden");
         } else {
-            configurator.style.display = "none";
+           configurator.classList.add("hidden");
+           iconDown.classList.remove("hidden");
+           iconUp.classList.add("hidden");
         }
-    }
+     }
 
     function addCriteriaFunc() {
 
