@@ -16,4 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeExpandCollapse();
     initializeResizer();
     initializeD3Visualization();
+
+    function toggleConfigurator() {
+        const configurator = document.getElementById("relation-configurator");
+        if (configurator.style.display === "none") {
+            configurator.style.display = "block";
+        } else {
+            configurator.style.display = "none";
+        }
+    }
+
 }); 

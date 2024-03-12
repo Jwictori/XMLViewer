@@ -8,23 +8,55 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-gray-50 p-4">
-    <div class="container mx-auto">
-        <input type="file" id="fileInput" class="mb-4" />
-        <input type="text" id="searchInput" placeholder="Search..." class="mb-4 p-2 border rounded w-full" />
-        <div class="controls mb-4">
-            <button id="expandAll" class="control-btn">Expand All</button>
-            <button id="collapseAll" class="control-btn">Collapse All</button>
-        </div>
-        <div id="container" class="flex">
-            <div id="treeViewer" class="panel">
-                <div id="treeContainer"></div>
-            </div>
-            <div id="resizer" class="resizer"></div> <!-- Draggable divider -->
-            <div id="d3Visualization" class="panel">
-                <div id="d3-container"></div>
-            </div>
-        </div>
-    </div>
+
+    <div class="container mx-auto">	
+		<div class="header-container">
+			<!-- Existing header elements -->
+			<input type="file" id="fileInput" class="mb-4" />
+			<input type="text" id="searchInput" placeholder="Search..." class="mb-4 p-2 border rounded w-full" />
+			<div class="controls mb-4">
+				<button id="expandAll" class="control-btn">Expand All</button>
+				<button id="collapseAll" class="control-btn">Collapse All</button>
+			</div>
+		</div>
+		
+		<button id="toggleConfigurator" onclick="toggleConfigurator()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+			Configure Relations
+		</button>
+		
+		<div id="relation-configurator" class="hidden">
+			<div class="criteria my-4">
+				<select id="node-selector-1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+				</select>
+				<select id="relation-type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mx-2">
+					<option value="parent-child">Parent-Child</option>
+					<option value="sibling">Sibling</option>
+				</select>
+				<select id="node-selector-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+				</select>
+				<button onclick="addCriteria()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+					Add Criteria
+				</button>
+			</div>
+			<button onclick="applyConfiguration()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+				Apply Configuration
+			</button>
+		</div>
+		
+		<div class="data-visualization-container">
+			<!-- Containers for the treeView and D3 visualization -->
+			<div id="container" class="flex">
+				<div id="treeViewer" class="panel">
+					<div id="treeContainer"></div>
+				</div>
+				<div id="resizer" class="resizer"></div> <!-- Draggable divider -->
+				<div id="d3Visualization" class="panel">
+					<div id="d3-container"></div>
+				</div>
+			</div>
+		</div>
+        
+	</div>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="js/Main.js" type="module"></script>
 </body>
