@@ -7,8 +7,9 @@ export function initializeResizer() {
   let initialPosX = 0;
   let initialWidth = 0;
   let minWidth = 100;
+  let ghostDivider;
 
-  resizer.addEventListener("mousedown", function (e) {
+  /*resizer.addEventListener("mousedown", function (e) {
     e.preventDefault();
     isResizing = true;
     initialPosX = e.clientX;
@@ -21,6 +22,27 @@ export function initializeResizer() {
       //console.log("Mouse released, resizing stopped"); // For debug
     });
   });
+  */
+  resizer.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+    isResizing = true;
+    initialPosX = e.clientX;
+    initialWidth = leftPanel.offsetWidth;
+
+    // Create a ghost divider for visual feedback
+    ghostDivider = resizer.cloneNode(true);
+    ghostDivider.classList.add('ghost-divider');
+    container.appendChild(ghostDivider);
+
+    document.addEventListener('mousemove', handleMouseMoveGhost);
+    document.addEventListener('mouseup', function() {
+        document.removeEventListener('mousemove', handleMouseMoveGhost);
+        isResizing = false;
+        leftPanel.style.flexBasis = `${newFlexBasis}px`;
+        container.removeChild(ghostDivider); // Remove ghost on mouseup
+    });
+  });
+
 
   function debounce(func, wait) {
     let timeout;
@@ -35,7 +57,7 @@ export function initializeResizer() {
     };
 }
 
-  const debouncedHandleMouseMove = debounce(function(e) {
+  /*const debouncedHandleMouseMove = debounce(function(e) {
     if (!isResizing) return;
     // Calculate the new basis
     const deltaX = e.clientX - initialPosX;
@@ -46,5 +68,12 @@ export function initializeResizer() {
     rightPanel.style.flexBasis = `${container.offsetWidth - newFlexBasis}px`;
     //console.log(`New flex-basis: ${setFlexBasis}px`); // For debug
   }, 50); // 50 milliseconds delay
+  */
+  function handleMouseMoveGhost(e) {
+    if (!isResizing) return;
+    const deltaX = e.clientX - initialPosX;
+    let newFlexBasis = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
+    ghostDivider.style.left = `${e.clientX}px`; // Update ghost position
+  }
 
 }
