@@ -44,7 +44,6 @@
 }
 
 .panel {
-    /*flex: 1;*/ /* Distribute space equally */
     overflow: auto; /* Add scrollbar if content overflows */
 }
 
@@ -74,3 +73,4 @@
     width: 5px; /* Match the width of your resizer */
     z-index: 100; /* Ensure it's above other content */
 }
+
