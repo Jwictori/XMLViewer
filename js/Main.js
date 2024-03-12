@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeResizer();
     initializeD3Visualization();
 
+    document.getElementById("toggleConfigurator").addEventListener("click", toggleConfigurator);
+
     function toggleConfigurator() {
         const configurator = document.getElementById("relation-configurator");
         if (configurator.style.display === "none") {
