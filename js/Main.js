@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const iconUp = document.querySelector(".icon-up");
         configurator.classList.toggle("configurator-hidden");
         if (configurator.classList.contains("configurator-hidden")) {
+            iconDown.classList.remove("hidden");
+            iconUp.classList.add("hidden");
+        } else {
            iconDown.classList.add("hidden");
            iconUp.classList.remove("hidden");
-        } else {
-           iconDown.classList.remove("hidden");
-           iconUp.classList.add("hidden");
         }
      }
 
