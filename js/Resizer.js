@@ -8,7 +8,6 @@ export function initializeResizer() {
   let initialWidth = 0;
   let minWidth = 100;
   let ghostDivider;
-  let newFlexBasis;
 
   resizer.addEventListener('mousedown', function(e) {
     e.preventDefault();
@@ -39,20 +38,6 @@ export function initializeResizer() {
     document.body.removeChild(ghostDivider); // Remove the ghost divider
     isResizing = false;
   });
-
-
-  function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
 
   function handleMouseMoveGhost(e) {
     const deltaX = e.clientX - initialPosX;
