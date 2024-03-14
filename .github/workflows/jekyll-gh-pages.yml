@@ -36,7 +36,7 @@ jobs:
           # path of input.css
           input: css/styles.css # default is src/input.css
           # path of output.css
-          output: css/output.css # default is src/output.css
+          output: css/output3.css # default is src/output.css
           # addtional tailwind params
           params: optional # optional, default is 
       - name: Build with Jekyll
