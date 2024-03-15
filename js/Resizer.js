@@ -6,6 +6,7 @@ export function initializeResizer() {
   let isResizing = false;
   let initialPosX = 0;
   let initialWidth = 0;
+  let remainderWidth = 0;
   let minWidth = 100;
   let ghostDivider;
 
@@ -13,7 +14,9 @@ export function initializeResizer() {
     e.preventDefault();
     isResizing = true;
     initialPosX = e.clientX;
-    initialWidth = leftPanel.offsetWidth;
+    remainderWidth = container.offsetWidth - leftPanel.offsetWidth - rightPanel.offsetWidth;
+    remainderWidth = remainderWidth/2;
+    initialWidth = leftPanel.offsetWidth + remainderWidth;
 
     // Create the ghost divider
     ghostDivider = resizer.cloneNode(true);
@@ -40,7 +43,7 @@ export function initializeResizer() {
   });
 
   function handleMouseMoveGhost(e) {
-    const deltaX = e.clientX - initialPosX;
+    const deltaX = e.clientX - initialPosX - remainderWidth;
     let newFlexBasisPreview = Math.max(minWidth, Math.min(container.offsetWidth - minWidth, initialWidth + deltaX));
     let newLeftPosition = container.getBoundingClientRect().left + newFlexBasisPreview;
     
